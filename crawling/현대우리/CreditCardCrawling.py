@@ -2,6 +2,7 @@ from selenium import webdriver
 from selenium.webdriver.chrome.options import Options
 from selenium.webdriver.common.by import By
 import time
+import datetime
 import json
 import re
 import os
@@ -100,9 +101,15 @@ def extract_card_details(driver):
 def extract_card_info(driver, card_id: int) -> dict:
     data = {"card_id": card_id}
 
+    # 카드 url 추가
+    try:
+        data["card_url"] = url = f"https://www.card-gorilla.com/card/detail/{card_id}"
+    except:
+        data["card_url"] = None
+
     # 카드명
     try:
-        data["card_name"] = driver.find_element(By.CLASS_NAME, "card").text
+        data["card_name"] = driver.find_element(By.CSS_SELECTOR, ".tit .card").text
     except:
         data["card_name"] = None
 
@@ -111,6 +118,11 @@ def extract_card_info(driver, card_id: int) -> dict:
         data["issuer"] = driver.find_element(By.CLASS_NAME, "brand").text
     except:
         data["issuer"] = None
+
+    try:
+        data["inactive"] = driver.find_element(By.CLASS_NAME, "inactive").text
+    except:
+        data["inactive"] = None
 
     # 연회비
     try:
@@ -168,11 +180,20 @@ def extract_card_info(driver, card_id: int) -> dict:
 
     return data
 
-def save_card_json(data: dict, output_dir="./cards"):
+def save_card_json(data: dict, output_root="./cards"):
+    issuer = data.get("issuer", "unknown").strip().replace(" ", "_")
+    card_id = data.get("card_id", "unknown")
+
+    # 디렉토리 경로: cards/현대카드/
+    output_dir = os.path.join(output_root, issuer)
     os.makedirs(output_dir, exist_ok=True)
-    path = os.path.join(output_dir, f"card_{data['card_id']}.json")
+
+    filename = f"{issuer}_{card_id}.json"
+    path = os.path.join(output_dir, filename)
+
     with open(path, "w", encoding="utf-8") as f:
         json.dump(data, f, ensure_ascii=False, indent=2)
+
     print(f"저장 완료: {path}")
 
 def get_card_info(card_id: int, save=True) -> dict:
@@ -194,6 +215,31 @@ def get_card_info(card_id: int, save=True) -> dict:
     finally:
         driver.quit()
 
-# 실행 예시
+def save_all_cards(start_id=1, end_id=2857, log_path="./card_crawl_log.txt"):
+    with open(log_path, "w", encoding="utf-8") as log_file:
+        for card_id in range(start_id, end_id + 1):
+            print(f"\n[+] 카드 ID {card_id} 처리 중...")
+            try:
+                data = get_card_info(card_id, save=True)
+
+                if not data or not data.get("card_name"):
+                    print(f"[!] 카드 ID {card_id}: 정보 없음 (스킵)")
+                    log_file.write(f"{card_id} FAIL\n")
+                else:
+                    log_file.write(f"{card_id} CLEAR\n")
+            except Exception as e:
+                print(f"[!] 카드 ID {card_id} 처리 실패: {e}")
+                log_file.write(f"{card_id} FAIL\n")
+                
+            time.sleep(2)
+
+
 if __name__ == "__main__":
-    get_card_info(2669)
+    # start = time.time()
+    # save_all_cards(1, 2857)
+    # sec = time.time() - start
+    # times = str(datetime.timedelta(seconds=sec)) # 걸린시간 보기좋게 바꾸기
+    # short = times.split(".")[0] # 초 단위 까지만
+    # print(f"{times} sec")
+    # print(f"{short} sec")
+    save_all_cards(1, 10)
