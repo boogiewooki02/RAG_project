@@ -7,11 +7,11 @@
 
 <table>
   <tr>
-    <td><img src="./figure/profile_범석.png" width="100"/></td>
-    <td><img src="./figure/profile_동욱.png" width="100"/></td>
-    <td><img src="./figure/profile_민규.png" width="100"/></td>
-    <td><img src="./figure/profile_성의.png" width="100"/></td>
-    <td><img src="./figure/profile_채우.jpg" width="100"/></td>
+    <td><img src="./figure/profile_범석.png" width="250"/></td>
+    <td><img src="./figure/profile_동욱.png" width="250"/></td>
+    <td><img src="./figure/profile_민규.png" width="250"/></td>
+    <td><img src="./figure/profile_성의.png" width="250"/></td>
+    <td><img src="./figure/profile_채우.jpg" width="250"/></td>
   </tr>
   <tr>
     <td><a href="https://github.com/qjazk0000">고범석</a></td>
