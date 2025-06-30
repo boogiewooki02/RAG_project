@@ -40,7 +40,7 @@
 | ---------------------- | ---------------------------------------------------------------------------------------------------------------------------- |
 | **Language**           | ![Python](https://img.shields.io/badge/Python-265573?style=for-the-badge&logo=python&logoColor=white)                        |
 | **Crawler**            | ![Selenium](https://img.shields.io/badge/Selenium-67BF4E?style=for-the-badge&logo=selenium&logoColor=white)                  |
-| **Embedding**          | ![TEXT-EMBEDDING-3-LARGE](https://img.shields.io/badge/TEXT--EMBEDDING--3--LARGE-353535?style=for-the-badge&logoColor=white) |
+| **Embedding**          | ![TEXT-EMBEDDING-3-LARGE](https://img.shields.io/badge/TEXT--EMBEDDING--3--small-353535?style=for-the-badge&logoColor=white) |
 | **LLM Model**          | ![gpt-4.1](https://img.shields.io/badge/gpt--4.1-4B91FF?style=for-the-badge&logo=openai&logoColor=white)                     |
 | **Collaboration Tool** | ![Git](https://img.shields.io/badge/Git-F05032?style=for-the-badge&logo=git&logoColor=white)                                 |
 | **Vector DB**          | ![Chroma](https://img.shields.io/badge/Pinecone-ff5c83?style=for-the-badge&logo=databricks&logoColor=white)                  |
