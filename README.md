@@ -2,12 +2,25 @@
 
 ## 🍀 팀명 및 팀원
 
-**팀명**: 신용불량자
+**팀명**: 신용불량자  
 **팀원**: 고범석, 김동욱, 우민규, 홍성의, 홍채우
 
-| ![](./figure/profile1.jpg)             | ![](./figure/profile1.jpg)                 | ![](./figure/profile1.jpg)             | ![](./figure/profile1.jpg)               | ![](./figure/profile1.jpg)          |
-| -------------------------------------- | ------------------------------------------ | -------------------------------------- | ---------------------------------------- | ----------------------------------- |
-| [고범석](https://github.com/qjazk0000) | [김동욱](https://github.com/boogiewooki02) | [우민규](https://github.com/mingyu-oo) | [홍성의](https://github.com/seonguihong) | [홍채우](https://github.com/HCWDDD) |
+<table>
+  <tr>
+    <td><img src="./figure/profile_범석.png" width="100"/></td>
+    <td><img src="./figure/profile_동욱.png" width="100"/></td>
+    <td><img src="./figure/profile_민규.png" width="100"/></td>
+    <td><img src="./figure/profile_성의.png" width="100"/></td>
+    <td><img src="./figure/profile_채우.jpg" width="100"/></td>
+  </tr>
+  <tr>
+    <td><a href="https://github.com/qjazk0000">고범석</a></td>
+    <td><a href="https://github.com/boogiewooki02">김동욱</a></td>
+    <td><a href="https://github.com/mingyu-oo">우민규</a></td>
+    <td><a href="https://github.com/seonguihong">홍성의</a></td>
+    <td><a href="https://github.com/HCWDDD">홍채우</a></td>
+  </tr>
+</table>
 
 ## 📌 프로젝트 소개
 
@@ -21,30 +34,30 @@
 | 기존 서비스 한계   | [카드고릴라](https://www.card-gorilla.com): 여러 카드사는 포함되지만 대화형 추천 기능 없음<br>각 카드사 사이트: 대화형 챗봇이 있어도 자사 카드만 추천 가능 |
 | 본 시스템의 차별점 | 자연어 기반 대화형 카드 추천<br>여러 카드사 카드 동시 비교 가능                                                                                            |
 
----
-### 3️⃣ 기술 스택
-| 항목                | 내용 |
-|---------------------|------|
-| **Language**        | ![Python](https://img.shields.io/badge/Python-265573?style=for-the-badge&logo=python&logoColor=white) |
-| **Crawler**         | ![Selenium](https://img.shields.io/badge/Selenium-67BF4E?style=for-the-badge&logo=selenium&logoColor=white) |
-| **Embedding**       | ![TEXT-EMBEDDING-3-LARGE](https://img.shields.io/badge/TEXT--EMBEDDING--3--LARGE-353535?style=for-the-badge&logoColor=white) |
-| **LLM Model**       | ![gpt-4.1](https://img.shields.io/badge/gpt--4.1-4B91FF?style=for-the-badge&logo=openai&logoColor=white) |
-| **Collaboration Tool** | ![Git](https://img.shields.io/badge/Git-F05032?style=for-the-badge&logo=git&logoColor=white) |
-| **Vector DB**| ![Chroma](https://img.shields.io/badge/Pinecone-ff5c83?style=for-the-badge&logo=databricks&logoColor=white) |
+## 🔨 기술 스택
 
+| 항목                   | 내용                                                                                                                         |
+| ---------------------- | ---------------------------------------------------------------------------------------------------------------------------- |
+| **Language**           | ![Python](https://img.shields.io/badge/Python-265573?style=for-the-badge&logo=python&logoColor=white)                        |
+| **Crawler**            | ![Selenium](https://img.shields.io/badge/Selenium-67BF4E?style=for-the-badge&logo=selenium&logoColor=white)                  |
+| **Embedding**          | ![TEXT-EMBEDDING-3-LARGE](https://img.shields.io/badge/TEXT--EMBEDDING--3--LARGE-353535?style=for-the-badge&logoColor=white) |
+| **LLM Model**          | ![gpt-4.1](https://img.shields.io/badge/gpt--4.1-4B91FF?style=for-the-badge&logo=openai&logoColor=white)                     |
+| **Collaboration Tool** | ![Git](https://img.shields.io/badge/Git-F05032?style=for-the-badge&logo=git&logoColor=white)                                 |
+| **Vector DB**          | ![Chroma](https://img.shields.io/badge/Pinecone-ff5c83?style=for-the-badge&logo=databricks&logoColor=white)                  |
+
+---
 
 ## 📂 시스템 구성
 
 1. **데이터 수집 및 전처리**
 
-   - 출처: 카드고릴라의 카드 정보 페이지 (카드 ID 기반 URL)
+   - 출처: 카드고릴라의 카드 정보 페이지 (카드id 기반 URL)
    - 수집 항목: 카드명, 카드사, 브랜드(VISA, Mastercard), 연회비, 혜택, 유의사항
    - 처리 방식: Selenium으로 동적 요소 렌더링, HTML 파싱, JSON으로 저장
    - 발급 불가 카드 필터링: "신규발급이 중단된 카드입니다." 문자열 포함 데이터 수집 X
    - 혜택 분류: 주요 혜택 항목은 benefits으로 추출
 
 2. **문서 임베딩**
-   (성의님 모델 내용으로 수정)
 
    - 임베딩 모델: text-embedding-3-small (OPEN AI)
    - 벡터 DB: Pinecone DB
@@ -68,7 +81,7 @@ recommend_chain = (
         "cards_block": lambda x: format_cards(x["cards"])
     })
     | RunnableLambda(make_prompt)
-    | llm
+    | llm # gpt-4.1
     | parser
 )
 ```
@@ -146,7 +159,7 @@ flowchart LR
 
 ## 💬 예시 입력/출력
 
-입력
+입력창
 
 ```
 원하는 동작을 선택하세요:
@@ -181,5 +194,5 @@ flowchart LR
 
 ## ⚙️ 종합 평가 및 개선 방안
 
-1. ~~
-2. ~~
+1.
+2.
