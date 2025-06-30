@@ -186,7 +186,7 @@ flowchart LR
 
 ---
 
-## ⚙️ 종합 평가 및 개선 방안
+## ⚙️ 추후 발전 계획
 
 ![웹 이미지](./figure/chatting.png)
 
