@@ -1,4 +1,3 @@
-# embedding.py
 import json
 from langchain.vectorstores import Chroma
 from langchain.docstore.document import Document

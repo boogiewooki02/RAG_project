@@ -1,13 +1,5 @@
-# app.py
-# from rag_chain import rag_chain
-
-# question = input("질문을 입력하세요: ")
-# response = rag_chain.invoke(question)
-
-# print(response)
-
 import streamlit as st
-from rag_chain import rag_chain
+from rag.rag_chain import rag_chain
 
 st.set_page_config(page_title="신용카드 추천 챗봇", page_icon="💳")
 

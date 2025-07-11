@@ -1,4 +1,3 @@
-# retriever.py
 from langchain.vectorstores import Chroma
 from langchain_openai import OpenAIEmbeddings
 

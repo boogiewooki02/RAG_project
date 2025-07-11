@@ -1,9 +1,8 @@
-# rag_chain.py
 from langchain.prompts import PromptTemplate
 from langchain_openai import ChatOpenAI
 from langchain_core.runnables import RunnablePassthrough
 from langchain_core.output_parsers import StrOutputParser
-from retriever import retriever
+from rag.retriever import retriever
 
 prompt_template = PromptTemplate(
     template="""

@@ -1,0 +1,31 @@
+# Core dependencies
+langchain
+langchain-openai
+langchain-huggingface
+langchain-core
+
+# Vector DB
+chromadb
+
+# Model interaction
+openai
+transformers
+huggingface_hub
+sentence-transformers
+
+# Web App
+streamlit
+
+# Crawling
+beautifulsoup4
+selenium
+lxml
+
+# Evaluation
+ragas
+datasets
+evaluate
+
+# Utility
+python-dotenv
+tqdm

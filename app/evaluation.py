@@ -1,6 +1,5 @@
-# evaluation.py
-from rag_chain import rag_chain
-from retriever import retriever
+from rag.rag_chain import rag_chain
+from rag.retriever import retriever
 from datasets import Dataset
 from ragas import evaluate
 from ragas.metrics import faithfulness, answer_relevancy
